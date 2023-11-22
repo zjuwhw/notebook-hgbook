@@ -1,0 +1,410 @@
+# Part 2: Population genetics: the forces that shape genetic variation
+
+key forces are:
+
+- mutation
+- drift
+- recombination
+- natural selection
+
+## 2.1 Genetic Drift: What happens to alleles over time?
+
+- two copies of your genome differ 3 million SNPs
+- about 70 are new mutations from your parents (one generation)
+- most SNPs are inherited from very distant ancestors
+
+- genetic drift: the random changes in allele frequencies over time
+- neutral variation assumption
+- mutations can be lost, common, or fixed (fixation)
+
+- original allele/ancestral allele
+- new allele/derived allele
+
+- a new derived allele starts out with 1 copy, i.e. allele frequency of the derived allele is $p=1/2N$, with N be the number of individuals and 2 due to diploid
+
+- Pitcairn island example: 50 inhabitants; 29 founders in 1790; the population never exceeded 250
+
+### The Wright-Fisher (WF) model of genetic drift
+
+Assumption
+
+- a population with N individuals (2N alleles)
+- discrete generations
+- mate at random
+- constant population size (N for every generation)
+- ignoring on the sexes of parents
+
+- binomial distribution
+- binomial sampling
+
+2N independent draws, the allele frequency is p in the previous generation and p1 in the next generation
+
+- $E(p1)=E(p)$
+- $var(p1) = p(1-p)/2N$
+
+```{r}
+
+set.seed(2)
+n=10
+
+###  the founder population
+p0 = 0.55
+x0 = c(rep(0,2*n*(1-p0)), rep(1, 2*n*p0))
+
+### simulate the next generation
+replicate_num = 1000
+ps = c()
+for(i in 1:replicate_num){
+x = sample(x0,2*n,replace=T)
+ps=c(ps, mean(x))
+}
+
+### plot the change of allele frequency
+mean(ps); p0
+var(ps); p0*(1-p0)/2/n
+
+```
+
+### Binomial sampling over successive generations produces genetic drift
+
+over the course of many generations
+
+- the result of binomial sampling in one generation gives you the starting point for binomial sampling in the next generation
+- Markov chain or random walk
+
+```{r}
+
+set.seed(21)
+n=10
+
+### the founder population
+p0 = 0.55
+x0 = c(rep(0,2*n*(1-p0)), rep(1, 2*n*p0))
+
+### simulate the next 120 generations
+ps = c()
+x = x0
+for(i in 1:120){
+    x = sample(x,2*n,replace=T)
+    ps=c(ps, mean(x))
+}
+
+### plot the change of allele frequency
+plot(0:120, c(p0, ps), type="l")
+
+```
+
+Eventually, the derived allele will either reach 100% frequency (fixed) or 0% (lost). 0 and 1 are referred to as absorbing states
+
+### mutation and drift
+
+model the drift for a mutation (only one derived allele)
+
+**infinite sites** assumption: each mutation creates a new allele that did not exist previously in the population
+
+- most alleles in a population are very rare: every new mutation starts out rare in the population (one copy), and most are quickly lost, while a very small fraction drift up to become common
+
+- the probability that a derived allele currently at frequency $p$ will eventually fix is also $p$.
+
+### mutation, drift and the amount of genetic variation
+
+- expected heterozygosity
+- in modern human populations, expected heterozygosity is ~0.5-1 heterozygous sites per kilobase
+- a balance between two forces: mutation (input new variation) and drift (remove variation)
+- it's $4N\mu$ with N being population size and $\mu$ being the mutation rate
+
+### effective population size
+
+- use effective population size ($Ne$) instead of N to reflect the actual rate of drift
+- a few males have very many offspring can greatly reduce $Ne$
+- $Ne$ is usually much smaller than a census estimate of the population size
+
+#### Estimating $Ne$ from data
+
+Based on the expected heterozygosity of 5e-4 to 1e-3 and the mutation rate of 1.3e-8 in humans, we can see the $Ne \approx 20,000$ with 10,000 being the lower end of the range.
+
+The low number of Ne 10,000 - 20,000 comparing the current world population of ~8 billion is because it's a type of average overy the last million years and human population was far smaller for most of that time than it is now.
+
+### the WF model with haplotypes
+
+haplotype: contain multiple variant sites
+
+assume 
+
+- a genomic region of L basepairs
+- mutations can arise anywhere in the sequence
+- each haploid sequence in the next generation is drawn at random from the previous generation
+
+### WF simulation of haplotype variation
+
+Forward simulation
+
+```{r}
+set.seed(9)
+n = 5; l=4; mu=0.01
+G = matrix(0, nrow=2*n, ncol=l)
+nucleotides = c(0, 1, 2, 3)
+mutate = function(x){
+    return(sample(nucleotides[nucleotides!=x],1))
+}
+num_generation = 5
+Glist = list(G=G)
+for(igeneration in 1:num_generation){
+    for(irow in 1:(2*n)){
+        index_mutation = rbinom(l, 1, mu)
+        if(sum(index_mutation)!=0){
+            for(icol in which(index_mutation!=0)){
+                G[irow, icol] = mutate(G[irow,icol])
+            }
+        }
+    }
+    G = G[sample(1:(2*n), 2*n, replace=T),]
+    Glist[igeneration+1] = list(G=G)
+}
+Glist
+```
+
+#### Possible improvements
+
+- just keep track of the distinct haplotypes
+- don't store the nonvariable sites
+- generate the total number of new mutations each generation using a single Poisson random variable with mean $2N \mu L$
+
+#### simulation software
+
+- forward vs backward simulations: computationally slower, but simple models, esaier to implement and far more flexible.
+- **SLiM**
+
+## 2.2 More on genetic drift: The coalescent
+
+### A short history
+
+- Wright-Fisher model during the 1920s
+- Coalescent in 1982 and 1983: John Kingman, Richard Hudson, and Fumio Tajima
+
+### Inheritance of genetic material from a shared ancestor
+
+- coalesced; common ancestor
+- everyone in a population is related, although coalescence is usually far more ancient
+
+### The coalescent refers to ancient shared ancestry within populations
+
+#### Measuring time forward or backward
+
+#### The genealogy of a sample
+
+- coalescent genealogy or tree
+- a single common ancestor of the entire sample, known as the most recent common ancestor (MRCA)
+
+### Time to coalescence
+
+any two copies of a locus, each copy has a random parent from 2N chromosomes in the previous generation. So the probability that they descend from the same parent is $1/2N$, and the probability that they descend from different parent is $1-1/2N$.
+
+The probability that they descend from different parent after going back t generations:
+
+$$(1-\frac{1}{2N})^t$$
+as $1-1/2N < 1$, the $(1-1/2N)^t$ approaches zero with t increasing. This means that if we go far enough back in time we can guarantee that any pair of copies of this locus have a common ancestor.
+
+### Understanding waiting-time distributions: the geometric distribution
+
+Image a 20-sided die, how many times do I need to roll the die until it lands with the '20' face up?
+
+If we get a '20' on t+1 roll, then we don't have '20' in the previous t rolls and get '20' on the t+1 roll. So the probability is
+
+$$p*(1-p)^t$$
+
+, where p is 1/20 in this case
+
+This function describes the waiting times for events and it is called **geometric distribution**
+
+The probability of rolling a 20 within the first t rolls:
+
+$$1-(1-p)^t$$
+
+The average waiting time to the first success is 1/p
+
+### Understanding waiting-time distributions: the exponential distribution
+
+approximate the geometric with a continuous distribution called the **exponential distribution**. They are virtually equivalent
+
+Example: "how long will it be until the next earthquake on the Stanford campus?" And let $\lambda$ be the rate of earthquakes per day.
+
+The probability that the next earthquake will occur exactly t days from now is (probability density function (PDF))
+
+$$\lambda e^{-\lambda t}$$
+
+and the total probability of having an earthquake any time within the next t days is (cumulative distribution function (CDF))
+
+$$1-e^{-\lambda t}$$
+
+### The time distribution for two samples
+
+For two copies of a locus, there is a probability 1/2N that the two copies will coalesce each generation. We model it by exponential distribution with $\lambda = 1/2N$
+
+```{r}
+n=20000;lambda=1/2/n
+ts = seq(0,200000,length=100)
+plot(ts, 1-exp(-lambda*ts), type="l", ylab="p", main="probability that two samples coalesce \n within the most recent t generations", xlab="generations")
+abline(v=2*n, col="blue")
+```
+
+So, there is a 50% chance that coalescence occurs within the last 1.4N = 28,000 generations. It's almost certain that coalescence occurs within 10N = 200,000 generations.
+
+These timescales are really lone in terms of human evolution. Assume 25 years for one generation, 2N generations is 1 million years
+
+### The coalescent for larger samples
+
+extend from a pair of alleles to $m$ alleles (m/2 individuals)
+
+For m copies back in time, pick two of these lineages random to coalesce into a common ancestor, so there will be m-1 copies. This process repeats until we get down to 2, and then finally to one common ancestor.
+
+Use $T_k$ to be the number of generations when there are $k$ lineages on the tree. So $T_2$ has an exponeital distribution. The expected value of $T_k$ is
+
+$$E(T_k) = \frac{4N}{k(k-1)}=2N*\frac{2}{k(k-1)}$$
+
+, as for k lineages, there are $k(k-1)/2$ possible pairs to get a possible coalescent.
+
+So when k=10, the average waiting time for a coalescent is 45-fold shorter, 2N/45 generations.
+
+In other words, the most recent coalescent events - when there are many lineages - occur within a few generations, while the oldest coalescent events can easily take a million years.
+
+How long age was the MRCA of a sample (or even of the entire population)?
+
+$$T_{MRCA(m)}=T_2+T_3+T_4+...+T_{m-1}+T_{m}$$
+
+$$E[T_{MRCA(m)}]=\sum_{k=2}^{m}\frac{4N}{k(k-1)}$$
+
+As the sample size gets large,
+
+$$\lim\limits_{m \to \infty } E[T_{MRCA(m)}] = 4N$$
+
+So the common ancestor for the entire population is 4N generations ago (~2 million years, for humans). on average, half of the total time back to the common ancestor is spent waiting for the last two lineages to coalesce.
+
+The genealogy has both random topology (i.e., branching patterns) and random times. both the topology and coalescent times are random draws from the coalescent process.
+
+### Coalescent with mutation
+
+Assume a stretch of L base pairs (L = 5kb, for example) in m samples (without recombination) , $\mu$ is the mutation rate per base pair per generation. $b_i$ is the length of branche i on the tree.
+
+Let $n_i$ be the number of mutations on branch $i$. The expected number of mutations $n_i$ is
+
+$$E[n_i]=\mu b_i L$$
+
+, modeled by the Poisson distribution.
+
+#### Trees, brances, and derived allele frequencies
+
+a branch is above j samples, then any mutation on that branch will occur exactly j times within the sample
+
+terminal branches; mutations that occur on them are referred to as singletons as they are found in only a single sample
+
+### Quantitative aspects of variation in the coalescent
+
+Question: how many sequence differences can I expect between two samples, in a region of L basepairs?
+
+Recall, the coalescent time for two samples,
+
+$$T_2 \sim exponential(\lambda=1/2N); E(T_2)=2N$$
+
+The mutation rate on both branch on L baseparis is $2\mu L$ per generation
+
+So the total number of differences between the two modern-day samples
+
+$$E(T_2) \times 2\mu L=4N\mu L$$
+
+It's convenient to divide this by L, which gives us the expected number of differences per base pair. That is equivalent to **heterozygosity per site**, H, which has been computed based on WF forward model.
+
+#### most heterozygous SNPs are very old
+
+Mentioned before that there are about 3 million heterozygous SNPs for two copies of your genome.
+
+Mentioned before the average time to the common ancestor of two homologous copies is 2N generations (~1 million years=$25*2*20,000$). A mutation, on average, occurs halfway, which is 500,000 years ago.
+
+Modern humans evolved in sub-Saharan Africa. About 70,000 years ago, some populations started spreading out of Africa into the Middle East.
+
+#### The number of SNPs found in a sample
+
+expand from a sample of 2 to a sample of $m$
+
+Suppose that a region of $L$ basepairs in $m$ samples, the total branch length (i.e., the sum of all the branch lengths) is
+
+$$\sum_{k=2}^m k \times E(T_k)=\sum_{k=2}^m k \times \frac{4N}{k(k-1)}=\sum_{k=2}^m \frac{4N}{k-1}$$
+
+So, the expected number of variable sites (i.e., SNPs) is
+
+$$\sum_{k=2}^m \frac{4N}{k-1} \times \mu \times L=4N\mu L\sum_{k=2}^m \frac{1}{k-1}=4N\mu L\sum_{k=1}^m \frac{1}{k}$$
+
+One key point is that as the sample size grows the MRCA time converges to 4N, while the number of segregating sites grows indefinitely at a rate proportional to the log of the sample size, $ln(m)$.
+
+#### the site frequency spectrum (SFS)
+
+Let $s_i$ be the number of SNPs at which the drived allel is present exactly $i$ times. For example, $s_1$ gives us the number of singletons, $s_2$ the number of doubletons, and so on.
+
+The total number of SNPs, S, is
+
+$$S=\sum_{i=1}^{m-1} s_i$$
+
+The vector of allele frequencies $s_1, s_2,s_3,...$ is referred to as the **site frequency spectrum (SFS)**. Distortion away from SFS can be used to detect some types of natural selection, as well as other depatures from the basic model such as recent population growth.
+
+The expected number of variants with a derived allele frequency $i$ is proportional to $1/i$:
+
+$$E[s_i]=\frac{1}{i}\times 4N\mu L$$
+
+```{r}
+m=100; fNmuL=100
+barplot(1/(1:m)*fNmuL, col="blue", border=NA,
+     xlab="frequency of derived variant",
+     ylab="expected number of variants")
+```
+
+For m=100, 55% of the variants are below 10% frequency. And for m=10,000, 76% of variants are at <10% frequency.
+
+One key thing is that most variants are rare. A useful rule of thumb is that allele frequencies are uniform on a log scale.
+
+The WF model gives a different conceptual tool to reach a similar conclusion: every new mutation starts out rare and most are lost quickly, while only a few are lucky enough to drift up to become common.
+
+### The coalescent with population size changes
+
+The model above, simplest possible population model: constant size and no population structure; **vanilla coalescent**
+
+Two types of changing population size: bottlenecks and population growth
+
+#### Population bottlenecks
+
+A bottleneck refers to a reduction in population size. Bottlenecks greatly increase the rate of genetic drift.
+
+Bottlenecks during the spread of populations as they left Africa and colonized the globe during the past ~80k years. This is why non-African populations have less genetic variation than Africans.
+
+The ancestors of modern Jews went through a tight population bottleneck ~1000 years ago.
+
+The rate of coalescence is k(k-1)/4N per generation. When N decreases, the rate will increase. This means the few lineages that predate the bottleneck are likely to have many descendants.
+
+#### Population growth
+
+human populations: ~1 million in 10,000 BCE to ~8 billion today
+
+A very large population size slows down the rate of coalescence at very recent times, and increased the number of very rare variants.
+
+In a model, the population grew instantaneously to infinite size, 100 generations ago. So there would be no coalescence in these 100 generations and greatly extending the terminal branches.
+
+The longer terminal branches produce many more singleton mutations: $4N \times \mu L$ in vanilla model, but $(4N+100m) \times \mu L$.
+
+A more realistic model is continuous exponential growth.
+
+#### Footprints of population history in real data
+
+Tennessen et al. (2012), exome sequencing for 1,100 African-American, and 1,300 European-American.
+
+The authors observed a much higher fraction of rare vriants compared to the null, a direct evidence for rapid recent population growth. Then fit a model of historical population sizes (often called a **demographic model**) that can fit the full SFS data.
+
+### The coalescent and the fixation process
+
+#### The probability of fixation for an allele now at frequency p, is simply p
+
+#### The average time to fixation for a new mutation is 4N generations
+
+### Coalescent simulation of haplotype variation
+
+Goncalo Abecasis's code: https://csg.sph.umich.edu/abecasis/class/2003/Practical1.html
+
+msprime software

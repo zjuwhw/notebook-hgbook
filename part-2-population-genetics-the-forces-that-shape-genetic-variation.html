@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Part 2: Population genetics: the forces that shape genetic variation | _main.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Part 2: Population genetics: the forces that shape genetic variation | _main.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Part 2: Population genetics: the forces that shape genetic variation | _main.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notebook for HG</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><i class="fa fa-check"></i><b>2</b> Part 2: Population genetics: the forces that shape genetic variation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#genetic-drift-what-happens-to-alleles-over-time"><i class="fa fa-check"></i><b>2.1</b> 2.1 Genetic Drift: What happens to alleles over time?</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-wright-fisher-wf-model-of-genetic-drift"><i class="fa fa-check"></i><b>2.1.1</b> The Wright-Fisher (WF) model of genetic drift</a></li>
+<li class="chapter" data-level="2.1.2" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#binomial-sampling-over-successive-generations-produces-genetic-drift"><i class="fa fa-check"></i><b>2.1.2</b> Binomial sampling over successive generations produces genetic drift</a></li>
+<li class="chapter" data-level="2.1.3" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#mutation-and-drift"><i class="fa fa-check"></i><b>2.1.3</b> mutation and drift</a></li>
+<li class="chapter" data-level="2.1.4" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#mutation-drift-and-the-amount-of-genetic-variation"><i class="fa fa-check"></i><b>2.1.4</b> mutation, drift and the amount of genetic variation</a></li>
+<li class="chapter" data-level="2.1.5" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#effective-population-size"><i class="fa fa-check"></i><b>2.1.5</b> effective population size</a></li>
+<li class="chapter" data-level="2.1.6" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-wf-model-with-haplotypes"><i class="fa fa-check"></i><b>2.1.6</b> the WF model with haplotypes</a></li>
+<li class="chapter" data-level="2.1.7" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#wf-simulation-of-haplotype-variation"><i class="fa fa-check"></i><b>2.1.7</b> WF simulation of haplotype variation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#more-on-genetic-drift-the-coalescent"><i class="fa fa-check"></i><b>2.2</b> 2.2 More on genetic drift: The coalescent</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#a-short-history"><i class="fa fa-check"></i><b>2.2.1</b> A short history</a></li>
+<li class="chapter" data-level="2.2.2" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#inheritance-of-genetic-material-from-a-shared-ancestor"><i class="fa fa-check"></i><b>2.2.2</b> Inheritance of genetic material from a shared ancestor</a></li>
+<li class="chapter" data-level="2.2.3" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-coalescent-refers-to-ancient-shared-ancestry-within-populations"><i class="fa fa-check"></i><b>2.2.3</b> The coalescent refers to ancient shared ancestry within populations</a></li>
+<li class="chapter" data-level="2.2.4" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#time-to-coalescence"><i class="fa fa-check"></i><b>2.2.4</b> Time to coalescence</a></li>
+<li class="chapter" data-level="2.2.5" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#understanding-waiting-time-distributions-the-geometric-distribution"><i class="fa fa-check"></i><b>2.2.5</b> Understanding waiting-time distributions: the geometric distribution</a></li>
+<li class="chapter" data-level="2.2.6" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#understanding-waiting-time-distributions-the-exponential-distribution"><i class="fa fa-check"></i><b>2.2.6</b> Understanding waiting-time distributions: the exponential distribution</a></li>
+<li class="chapter" data-level="2.2.7" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-time-distribution-for-two-samples"><i class="fa fa-check"></i><b>2.2.7</b> The time distribution for two samples</a></li>
+<li class="chapter" data-level="2.2.8" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-coalescent-for-larger-samples"><i class="fa fa-check"></i><b>2.2.8</b> The coalescent for larger samples</a></li>
+<li class="chapter" data-level="2.2.9" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#coalescent-with-mutation"><i class="fa fa-check"></i><b>2.2.9</b> Coalescent with mutation</a></li>
+<li class="chapter" data-level="2.2.10" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#quantitative-aspects-of-variation-in-the-coalescent"><i class="fa fa-check"></i><b>2.2.10</b> Quantitative aspects of variation in the coalescent</a></li>
+<li class="chapter" data-level="2.2.11" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-coalescent-with-population-size-changes"><i class="fa fa-check"></i><b>2.2.11</b> The coalescent with population size changes</a></li>
+<li class="chapter" data-level="2.2.12" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-coalescent-and-the-fixation-process"><i class="fa fa-check"></i><b>2.2.12</b> The coalescent and the fixation process</a></li>
+<li class="chapter" data-level="2.2.13" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#coalescent-simulation-of-haplotype-variation"><i class="fa fa-check"></i><b>2.2.13</b> Coalescent simulation of haplotype variation</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+Published with <a href="https://github.com/rstudio/bookdown" target="blank">bookdown</a> by <a href="http://zjuwhw.github.io/" target="blank">zjuwhw</a>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="part-2-population-genetics-the-forces-that-shape-genetic-variation" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Part 2: Population genetics: the forces that shape genetic variation<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#part-2-population-genetics-the-forces-that-shape-genetic-variation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>key forces are:</p>
+<ul>
+<li>mutation</li>
+<li>drift</li>
+<li>recombination</li>
+<li>natural selection</li>
+</ul>
+<div id="genetic-drift-what-happens-to-alleles-over-time" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> 2.1 Genetic Drift: What happens to alleles over time?<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#genetic-drift-what-happens-to-alleles-over-time" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>two copies of your genome differ 3 million SNPs</p></li>
+<li><p>about 70 are new mutations from your parents (one generation)</p></li>
+<li><p>most SNPs are inherited from very distant ancestors</p></li>
+<li><p>genetic drift: the random changes in allele frequencies over time</p></li>
+<li><p>neutral variation assumption</p></li>
+<li><p>mutations can be lost, common, or fixed (fixation)</p></li>
+<li><p>original allele/ancestral allele</p></li>
+<li><p>new allele/derived allele</p></li>
+<li><p>a new derived allele starts out with 1 copy, i.e. allele frequency of the derived allele is <span class="math inline">\(p=1/2N\)</span>, with N be the number of individuals and 2 due to diploid</p></li>
+<li><p>Pitcairn island example: 50 inhabitants; 29 founders in 1790; the population never exceeded 250</p></li>
+</ul>
+<div id="the-wright-fisher-wf-model-of-genetic-drift" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> The Wright-Fisher (WF) model of genetic drift<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-wright-fisher-wf-model-of-genetic-drift" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Assumption</p>
+<ul>
+<li><p>a population with N individuals (2N alleles)</p></li>
+<li><p>discrete generations</p></li>
+<li><p>mate at random</p></li>
+<li><p>constant population size (N for every generation)</p></li>
+<li><p>ignoring on the sexes of parents</p></li>
+<li><p>binomial distribution</p></li>
+<li><p>binomial sampling</p></li>
+</ul>
+<p>2N independent draws, the allele frequency is p in the previous generation and p1 in the next generation</p>
+<ul>
+<li><span class="math inline">\(E(p1)=E(p)\)</span></li>
+<li><span class="math inline">\(var(p1) = p(1-p)/2N\)</span></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
+<span id="cb1-2"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-2" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">10</span></span>
+<span id="cb1-3"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">###  the founder population</span></span>
+<span id="cb1-5"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-5" aria-hidden="true" tabindex="-1"></a>p0 <span class="ot">=</span> <span class="fl">0.55</span></span>
+<span id="cb1-6"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-6" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">2</span><span class="sc">*</span>n<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p0)), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">2</span><span class="sc">*</span>n<span class="sc">*</span>p0))</span>
+<span id="cb1-7"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="do">### simulate the next generation</span></span>
+<span id="cb1-9"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-9" aria-hidden="true" tabindex="-1"></a>replicate_num <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb1-10"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-10" aria-hidden="true" tabindex="-1"></a>ps <span class="ot">=</span> <span class="fu">c</span>()</span>
+<span id="cb1-11"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>replicate_num){</span>
+<span id="cb1-12"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-12" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">sample</span>(x0,<span class="dv">2</span><span class="sc">*</span>n,<span class="at">replace=</span>T)</span>
+<span id="cb1-13"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-13" aria-hidden="true" tabindex="-1"></a>ps<span class="ot">=</span><span class="fu">c</span>(ps, <span class="fu">mean</span>(x))</span>
+<span id="cb1-14"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-15"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="do">### plot the change of allele frequency</span></span>
+<span id="cb1-17"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ps); p0</span></code></pre></div>
+<pre><code>## [1] 0.5525</code></pre>
+<pre><code>## [1] 0.55</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(ps); p0<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p0)<span class="sc">/</span><span class="dv">2</span><span class="sc">/</span>n</span></code></pre></div>
+<pre><code>## [1] 0.01184059</code></pre>
+<pre><code>## [1] 0.012375</code></pre>
+</div>
+<div id="binomial-sampling-over-successive-generations-produces-genetic-drift" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Binomial sampling over successive generations produces genetic drift<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#binomial-sampling-over-successive-generations-produces-genetic-drift" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>over the course of many generations</p>
+<ul>
+<li>the result of binomial sampling in one generation gives you the starting point for binomial sampling in the next generation</li>
+<li>Markov chain or random walk</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">21</span>)</span>
+<span id="cb7-2"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-2" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">10</span></span>
+<span id="cb7-3"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">### the founder population</span></span>
+<span id="cb7-5"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-5" aria-hidden="true" tabindex="-1"></a>p0 <span class="ot">=</span> <span class="fl">0.55</span></span>
+<span id="cb7-6"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-6" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">2</span><span class="sc">*</span>n<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p0)), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">2</span><span class="sc">*</span>n<span class="sc">*</span>p0))</span>
+<span id="cb7-7"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="do">### simulate the next 120 generations</span></span>
+<span id="cb7-9"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-9" aria-hidden="true" tabindex="-1"></a>ps <span class="ot">=</span> <span class="fu">c</span>()</span>
+<span id="cb7-10"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-10" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> x0</span>
+<span id="cb7-11"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">120</span>){</span>
+<span id="cb7-12"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-12" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">=</span> <span class="fu">sample</span>(x,<span class="dv">2</span><span class="sc">*</span>n,<span class="at">replace=</span>T)</span>
+<span id="cb7-13"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-13" aria-hidden="true" tabindex="-1"></a>    ps<span class="ot">=</span><span class="fu">c</span>(ps, <span class="fu">mean</span>(x))</span>
+<span id="cb7-14"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-15"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="do">### plot the change of allele frequency</span></span>
+<span id="cb7-17"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">120</span>, <span class="fu">c</span>(p0, ps), <span class="at">type=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Eventually, the derived allele will either reach 100% frequency (fixed) or 0% (lost). 0 and 1 are referred to as absorbing states</p>
+</div>
+<div id="mutation-and-drift" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> mutation and drift<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#mutation-and-drift" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>model the drift for a mutation (only one derived allele)</p>
+<p><strong>infinite sites</strong> assumption: each mutation creates a new allele that did not exist previously in the population</p>
+<ul>
+<li><p>most alleles in a population are very rare: every new mutation starts out rare in the population (one copy), and most are quickly lost, while a very small fraction drift up to become common</p></li>
+<li><p>the probability that a derived allele currently at frequency <span class="math inline">\(p\)</span> will eventually fix is also <span class="math inline">\(p\)</span>.</p></li>
+</ul>
+</div>
+<div id="mutation-drift-and-the-amount-of-genetic-variation" class="section level3 hasAnchor" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> mutation, drift and the amount of genetic variation<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#mutation-drift-and-the-amount-of-genetic-variation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>expected heterozygosity</li>
+<li>in modern human populations, expected heterozygosity is ~0.5-1 heterozygous sites per kilobase</li>
+<li>a balance between two forces: mutation (input new variation) and drift (remove variation)</li>
+<li>it’s <span class="math inline">\(4N\mu\)</span> with N being population size and <span class="math inline">\(\mu\)</span> being the mutation rate</li>
+</ul>
+</div>
+<div id="effective-population-size" class="section level3 hasAnchor" number="2.1.5">
+<h3><span class="header-section-number">2.1.5</span> effective population size<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#effective-population-size" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>use effective population size (<span class="math inline">\(Ne\)</span>) instead of N to reflect the actual rate of drift</li>
+<li>a few males have very many offspring can greatly reduce <span class="math inline">\(Ne\)</span></li>
+<li><span class="math inline">\(Ne\)</span> is usually much smaller than a census estimate of the population size</li>
+</ul>
+<div id="estimating-ne-from-data" class="section level4 hasAnchor" number="2.1.5.1">
+<h4><span class="header-section-number">2.1.5.1</span> Estimating <span class="math inline">\(Ne\)</span> from data<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#estimating-ne-from-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Based on the expected heterozygosity of 5e-4 to 1e-3 and the mutation rate of 1.3e-8 in humans, we can see the <span class="math inline">\(Ne \approx 20,000\)</span> with 10,000 being the lower end of the range.</p>
+<p>The low number of Ne 10,000 - 20,000 comparing the current world population of ~8 billion is because it’s a type of average overy the last million years and human population was far smaller for most of that time than it is now.</p>
+</div>
+</div>
+<div id="the-wf-model-with-haplotypes" class="section level3 hasAnchor" number="2.1.6">
+<h3><span class="header-section-number">2.1.6</span> the WF model with haplotypes<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-wf-model-with-haplotypes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>haplotype: contain multiple variant sites</p>
+<p>assume</p>
+<ul>
+<li>a genomic region of L basepairs</li>
+<li>mutations can arise anywhere in the sequence</li>
+<li>each haploid sequence in the next generation is drawn at random from the previous generation</li>
+</ul>
+</div>
+<div id="wf-simulation-of-haplotype-variation" class="section level3 hasAnchor" number="2.1.7">
+<h3><span class="header-section-number">2.1.7</span> WF simulation of haplotype variation<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#wf-simulation-of-haplotype-variation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Forward simulation</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">9</span>)</span>
+<span id="cb8-2"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">5</span>; l<span class="ot">=</span><span class="dv">4</span>; mu<span class="ot">=</span><span class="fl">0.01</span></span>
+<span id="cb8-3"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-3" aria-hidden="true" tabindex="-1"></a>G <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow=</span><span class="dv">2</span><span class="sc">*</span>n, <span class="at">ncol=</span>l)</span>
+<span id="cb8-4"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-4" aria-hidden="true" tabindex="-1"></a>nucleotides <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb8-5"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-5" aria-hidden="true" tabindex="-1"></a>mutate <span class="ot">=</span> <span class="cf">function</span>(x){</span>
+<span id="cb8-6"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">sample</span>(nucleotides[nucleotides<span class="sc">!=</span>x],<span class="dv">1</span>))</span>
+<span id="cb8-7"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-8"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-8" aria-hidden="true" tabindex="-1"></a>num_generation <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb8-9"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-9" aria-hidden="true" tabindex="-1"></a>Glist <span class="ot">=</span> <span class="fu">list</span>(<span class="at">G=</span>G)</span>
+<span id="cb8-10"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(igeneration <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_generation){</span>
+<span id="cb8-11"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(irow <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(<span class="dv">2</span><span class="sc">*</span>n)){</span>
+<span id="cb8-12"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-12" aria-hidden="true" tabindex="-1"></a>        index_mutation <span class="ot">=</span> <span class="fu">rbinom</span>(l, <span class="dv">1</span>, mu)</span>
+<span id="cb8-13"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(<span class="fu">sum</span>(index_mutation)<span class="sc">!=</span><span class="dv">0</span>){</span>
+<span id="cb8-14"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span>(icol <span class="cf">in</span> <span class="fu">which</span>(index_mutation<span class="sc">!=</span><span class="dv">0</span>)){</span>
+<span id="cb8-15"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-15" aria-hidden="true" tabindex="-1"></a>                G[irow, icol] <span class="ot">=</span> <span class="fu">mutate</span>(G[irow,icol])</span>
+<span id="cb8-16"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-16" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb8-17"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-17" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb8-18"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-19"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-19" aria-hidden="true" tabindex="-1"></a>    G <span class="ot">=</span> G[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>(<span class="dv">2</span><span class="sc">*</span>n), <span class="dv">2</span><span class="sc">*</span>n, <span class="at">replace=</span>T),]</span>
+<span id="cb8-20"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-20" aria-hidden="true" tabindex="-1"></a>    Glist[igeneration<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> <span class="fu">list</span>(<span class="at">G=</span>G)</span>
+<span id="cb8-21"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-22"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb8-22" aria-hidden="true" tabindex="-1"></a>Glist</span></code></pre></div>
+<pre><code>## $G
+##       [,1] [,2] [,3] [,4]
+##  [1,]    0    0    0    0
+##  [2,]    0    0    0    0
+##  [3,]    0    0    0    0
+##  [4,]    0    0    0    0
+##  [5,]    0    0    0    0
+##  [6,]    0    0    0    0
+##  [7,]    0    0    0    0
+##  [8,]    0    0    0    0
+##  [9,]    0    0    0    0
+## [10,]    0    0    0    0
+## 
+## [[2]]
+##       [,1] [,2] [,3] [,4]
+##  [1,]    0    1    0    0
+##  [2,]    0    0    0    0
+##  [3,]    0    0    0    0
+##  [4,]    0    1    0    0
+##  [5,]    0    0    0    0
+##  [6,]    0    0    0    0
+##  [7,]    0    0    0    0
+##  [8,]    0    0    0    0
+##  [9,]    0    0    0    0
+## [10,]    0    0    0    0
+## 
+## [[3]]
+##       [,1] [,2] [,3] [,4]
+##  [1,]    0    0    0    0
+##  [2,]    0    0    0    2
+##  [3,]    0    0    0    0
+##  [4,]    0    0    0    0
+##  [5,]    0    0    0    2
+##  [6,]    0    0    0    0
+##  [7,]    0    1    0    0
+##  [8,]    0    0    0    0
+##  [9,]    0    0    0    0
+## [10,]    0    1    0    0
+## 
+## [[4]]
+##       [,1] [,2] [,3] [,4]
+##  [1,]    0    0    0    0
+##  [2,]    0    1    0    0
+##  [3,]    0    1    0    0
+##  [4,]    0    0    0    0
+##  [5,]    0    0    0    0
+##  [6,]    0    0    0    0
+##  [7,]    0    0    0    2
+##  [8,]    0    0    0    0
+##  [9,]    0    0    0    0
+## [10,]    0    0    0    0
+## 
+## [[5]]
+##       [,1] [,2] [,3] [,4]
+##  [1,]    0    0    0    0
+##  [2,]    0    0    0    2
+##  [3,]    0    1    0    0
+##  [4,]    0    0    0    0
+##  [5,]    0    0    0    0
+##  [6,]    0    0    0    0
+##  [7,]    0    0    0    0
+##  [8,]    0    0    0    0
+##  [9,]    0    0    0    0
+## [10,]    0    0    0    0
+## 
+## [[6]]
+##       [,1] [,2] [,3] [,4]
+##  [1,]    0    0    0    0
+##  [2,]    0    0    0    0
+##  [3,]    0    1    0    0
+##  [4,]    0    1    0    0
+##  [5,]    0    0    0    0
+##  [6,]    0    0    0    0
+##  [7,]    0    0    0    0
+##  [8,]    0    0    0    0
+##  [9,]    0    0    0    0
+## [10,]    0    0    0    0</code></pre>
+<div id="possible-improvements" class="section level4 hasAnchor" number="2.1.7.1">
+<h4><span class="header-section-number">2.1.7.1</span> Possible improvements<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#possible-improvements" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>just keep track of the distinct haplotypes</li>
+<li>don’t store the nonvariable sites</li>
+<li>generate the total number of new mutations each generation using a single Poisson random variable with mean <span class="math inline">\(2N \mu L\)</span></li>
+</ul>
+</div>
+<div id="simulation-software" class="section level4 hasAnchor" number="2.1.7.2">
+<h4><span class="header-section-number">2.1.7.2</span> simulation software<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#simulation-software" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>forward vs backward simulations: computationally slower, but simple models, esaier to implement and far more flexible.</li>
+<li><strong>SLiM</strong></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="more-on-genetic-drift-the-coalescent" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> 2.2 More on genetic drift: The coalescent<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#more-on-genetic-drift-the-coalescent" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a-short-history" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> A short history<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#a-short-history" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Wright-Fisher model during the 1920s</li>
+<li>Coalescent in 1982 and 1983: John Kingman, Richard Hudson, and Fumio Tajima</li>
+</ul>
+</div>
+<div id="inheritance-of-genetic-material-from-a-shared-ancestor" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Inheritance of genetic material from a shared ancestor<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#inheritance-of-genetic-material-from-a-shared-ancestor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>coalesced; common ancestor</li>
+<li>everyone in a population is related, although coalescence is usually far more ancient</li>
+</ul>
+</div>
+<div id="the-coalescent-refers-to-ancient-shared-ancestry-within-populations" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> The coalescent refers to ancient shared ancestry within populations<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-coalescent-refers-to-ancient-shared-ancestry-within-populations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="measuring-time-forward-or-backward" class="section level4 hasAnchor" number="2.2.3.1">
+<h4><span class="header-section-number">2.2.3.1</span> Measuring time forward or backward<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#measuring-time-forward-or-backward" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="the-genealogy-of-a-sample" class="section level4 hasAnchor" number="2.2.3.2">
+<h4><span class="header-section-number">2.2.3.2</span> The genealogy of a sample<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-genealogy-of-a-sample" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>coalescent genealogy or tree</li>
+<li>a single common ancestor of the entire sample, known as the most recent common ancestor (MRCA)</li>
+</ul>
+</div>
+</div>
+<div id="time-to-coalescence" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Time to coalescence<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#time-to-coalescence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>any two copies of a locus, each copy has a random parent from 2N chromosomes in the previous generation. So the probability that they descend from the same parent is <span class="math inline">\(1/2N\)</span>, and the probability that they descend from different parent is <span class="math inline">\(1-1/2N\)</span>.</p>
+<p>The probability that they descend from different parent after going back t generations:</p>
+<p><span class="math display">\[(1-\frac{1}{2N})^t\]</span>
+as <span class="math inline">\(1-1/2N &lt; 1\)</span>, the <span class="math inline">\((1-1/2N)^t\)</span> approaches zero with t increasing. This means that if we go far enough back in time we can guarantee that any pair of copies of this locus have a common ancestor.</p>
+</div>
+<div id="understanding-waiting-time-distributions-the-geometric-distribution" class="section level3 hasAnchor" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Understanding waiting-time distributions: the geometric distribution<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#understanding-waiting-time-distributions-the-geometric-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Image a 20-sided die, how many times do I need to roll the die until it lands with the ‘20’ face up?</p>
+<p>If we get a ‘20’ on t+1 roll, then we don’t have ‘20’ in the previous t rolls and get ‘20’ on the t+1 roll. So the probability is</p>
+<p><span class="math display">\[p*(1-p)^t\]</span></p>
+<p>, where p is 1/20 in this case</p>
+<p>This function describes the waiting times for events and it is called <strong>geometric distribution</strong></p>
+<p>The probability of rolling a 20 within the first t rolls:</p>
+<p><span class="math display">\[1-(1-p)^t\]</span></p>
+<p>The average waiting time to the first success is 1/p</p>
+</div>
+<div id="understanding-waiting-time-distributions-the-exponential-distribution" class="section level3 hasAnchor" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> Understanding waiting-time distributions: the exponential distribution<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#understanding-waiting-time-distributions-the-exponential-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>approximate the geometric with a continuous distribution called the <strong>exponential distribution</strong>. They are virtually equivalent</p>
+<p>Example: “how long will it be until the next earthquake on the Stanford campus?” And let <span class="math inline">\(\lambda\)</span> be the rate of earthquakes per day.</p>
+<p>The probability that the next earthquake will occur exactly t days from now is (probability density function (PDF))</p>
+<p><span class="math display">\[\lambda e^{-\lambda t}\]</span></p>
+<p>and the total probability of having an earthquake any time within the next t days is (cumulative distribution function (CDF))</p>
+<p><span class="math display">\[1-e^{-\lambda t}\]</span></p>
+</div>
+<div id="the-time-distribution-for-two-samples" class="section level3 hasAnchor" number="2.2.7">
+<h3><span class="header-section-number">2.2.7</span> The time distribution for two samples<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-time-distribution-for-two-samples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For two copies of a locus, there is a probability 1/2N that the two copies will coalesce each generation. We model it by exponential distribution with <span class="math inline">\(\lambda = 1/2N\)</span></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb10-1" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">20000</span>;lambda<span class="ot">=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">2</span><span class="sc">/</span>n</span>
+<span id="cb10-2"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb10-2" aria-hidden="true" tabindex="-1"></a>ts <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">200000</span>,<span class="at">length=</span><span class="dv">100</span>)</span>
+<span id="cb10-3"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ts, <span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>lambda<span class="sc">*</span>ts), <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;p&quot;</span>, <span class="at">main=</span><span class="st">&quot;probability that two samples coalesce </span><span class="sc">\n</span><span class="st"> within the most recent t generations&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;generations&quot;</span>)</span>
+<span id="cb10-4"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">2</span><span class="sc">*</span>n, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>So, there is a 50% chance that coalescence occurs within the last 1.4N = 28,000 generations. It’s almost certain that coalescence occurs within 10N = 200,000 generations.</p>
+<p>These timescales are really lone in terms of human evolution. Assume 25 years for one generation, 2N generations is 1 million years</p>
+</div>
+<div id="the-coalescent-for-larger-samples" class="section level3 hasAnchor" number="2.2.8">
+<h3><span class="header-section-number">2.2.8</span> The coalescent for larger samples<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-coalescent-for-larger-samples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>extend from a pair of alleles to <span class="math inline">\(m\)</span> alleles (m/2 individuals)</p>
+<p>For m copies back in time, pick two of these lineages random to coalesce into a common ancestor, so there will be m-1 copies. This process repeats until we get down to 2, and then finally to one common ancestor.</p>
+<p>Use <span class="math inline">\(T_k\)</span> to be the number of generations when there are <span class="math inline">\(k\)</span> lineages on the tree. So <span class="math inline">\(T_2\)</span> has an exponeital distribution. The expected value of <span class="math inline">\(T_k\)</span> is</p>
+<p><span class="math display">\[E(T_k) = \frac{4N}{k(k-1)}=2N*\frac{2}{k(k-1)}\]</span></p>
+<p>, as for k lineages, there are <span class="math inline">\(k(k-1)/2\)</span> possible pairs to get a possible coalescent.</p>
+<p>So when k=10, the average waiting time for a coalescent is 45-fold shorter, 2N/45 generations.</p>
+<p>In other words, the most recent coalescent events - when there are many lineages - occur within a few generations, while the oldest coalescent events can easily take a million years.</p>
+<p>How long age was the MRCA of a sample (or even of the entire population)?</p>
+<p><span class="math display">\[T_{MRCA(m)}=T_2+T_3+T_4+...+T_{m-1}+T_{m}\]</span></p>
+<p><span class="math display">\[E[T_{MRCA(m)}]=\sum_{k=2}^{m}\frac{4N}{k(k-1)}\]</span></p>
+<p>As the sample size gets large,</p>
+<p><span class="math display">\[\lim\limits_{m \to \infty } E[T_{MRCA(m)}] = 4N\]</span></p>
+<p>So the common ancestor for the entire population is 4N generations ago (~2 million years, for humans). on average, half of the total time back to the common ancestor is spent waiting for the last two lineages to coalesce.</p>
+<p>The genealogy has both random topology (i.e., branching patterns) and random times. both the topology and coalescent times are random draws from the coalescent process.</p>
+</div>
+<div id="coalescent-with-mutation" class="section level3 hasAnchor" number="2.2.9">
+<h3><span class="header-section-number">2.2.9</span> Coalescent with mutation<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#coalescent-with-mutation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Assume a stretch of L base pairs (L = 5kb, for example) in m samples (without recombination) , <span class="math inline">\(\mu\)</span> is the mutation rate per base pair per generation. <span class="math inline">\(b_i\)</span> is the length of branche i on the tree.</p>
+<p>Let <span class="math inline">\(n_i\)</span> be the number of mutations on branch <span class="math inline">\(i\)</span>. The expected number of mutations <span class="math inline">\(n_i\)</span> is</p>
+<p><span class="math display">\[E[n_i]=\mu b_i L\]</span></p>
+<p>, modeled by the Poisson distribution.</p>
+<div id="trees-brances-and-derived-allele-frequencies" class="section level4 hasAnchor" number="2.2.9.1">
+<h4><span class="header-section-number">2.2.9.1</span> Trees, brances, and derived allele frequencies<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#trees-brances-and-derived-allele-frequencies" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>a branch is above j samples, then any mutation on that branch will occur exactly j times within the sample</p>
+<p>terminal branches; mutations that occur on them are referred to as singletons as they are found in only a single sample</p>
+</div>
+</div>
+<div id="quantitative-aspects-of-variation-in-the-coalescent" class="section level3 hasAnchor" number="2.2.10">
+<h3><span class="header-section-number">2.2.10</span> Quantitative aspects of variation in the coalescent<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#quantitative-aspects-of-variation-in-the-coalescent" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Question: how many sequence differences can I expect between two samples, in a region of L basepairs?</p>
+<p>Recall, the coalescent time for two samples,</p>
+<p><span class="math display">\[T_2 \sim exponential(\lambda=1/2N); E(T_2)=2N\]</span></p>
+<p>The mutation rate on both branch on L baseparis is <span class="math inline">\(2\mu L\)</span> per generation</p>
+<p>So the total number of differences between the two modern-day samples</p>
+<p><span class="math display">\[E(T_2) \times 2\mu L=4N\mu L\]</span></p>
+<p>It’s convenient to divide this by L, which gives us the expected number of differences per base pair. That is equivalent to <strong>heterozygosity per site</strong>, H, which has been computed based on WF forward model.</p>
+<div id="most-heterozygous-snps-are-very-old" class="section level4 hasAnchor" number="2.2.10.1">
+<h4><span class="header-section-number">2.2.10.1</span> most heterozygous SNPs are very old<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#most-heterozygous-snps-are-very-old" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Mentioned before that there are about 3 million heterozygous SNPs for two copies of your genome.</p>
+<p>Mentioned before the average time to the common ancestor of two homologous copies is 2N generations (~1 million years=<span class="math inline">\(25*2*20,000\)</span>). A mutation, on average, occurs halfway, which is 500,000 years ago.</p>
+<p>Modern humans evolved in sub-Saharan Africa. About 70,000 years ago, some populations started spreading out of Africa into the Middle East.</p>
+</div>
+<div id="the-number-of-snps-found-in-a-sample" class="section level4 hasAnchor" number="2.2.10.2">
+<h4><span class="header-section-number">2.2.10.2</span> The number of SNPs found in a sample<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-number-of-snps-found-in-a-sample" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>expand from a sample of 2 to a sample of <span class="math inline">\(m\)</span></p>
+<p>Suppose that a region of <span class="math inline">\(L\)</span> basepairs in <span class="math inline">\(m\)</span> samples, the total branch length (i.e., the sum of all the branch lengths) is</p>
+<p><span class="math display">\[\sum_{k=2}^m k \times E(T_k)=\sum_{k=2}^m k \times \frac{4N}{k(k-1)}=\sum_{k=2}^m \frac{4N}{k-1}\]</span></p>
+<p>So, the expected number of variable sites (i.e., SNPs) is</p>
+<p><span class="math display">\[\sum_{k=2}^m \frac{4N}{k-1} \times \mu \times L=4N\mu L\sum_{k=2}^m \frac{1}{k-1}=4N\mu L\sum_{k=1}^m \frac{1}{k}\]</span></p>
+<p>One key point is that as the sample size grows the MRCA time converges to 4N, while the number of segregating sites grows indefinitely at a rate proportional to the log of the sample size, <span class="math inline">\(ln(m)\)</span>.</p>
+</div>
+<div id="the-site-frequency-spectrum-sfs" class="section level4 hasAnchor" number="2.2.10.3">
+<h4><span class="header-section-number">2.2.10.3</span> the site frequency spectrum (SFS)<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-site-frequency-spectrum-sfs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Let <span class="math inline">\(s_i\)</span> be the number of SNPs at which the drived allel is present exactly <span class="math inline">\(i\)</span> times. For example, <span class="math inline">\(s_1\)</span> gives us the number of singletons, <span class="math inline">\(s_2\)</span> the number of doubletons, and so on.</p>
+<p>The total number of SNPs, S, is</p>
+<p><span class="math display">\[S=\sum_{i=1}^{m-1} s_i\]</span></p>
+<p>The vector of allele frequencies <span class="math inline">\(s_1, s_2,s_3,...\)</span> is referred to as the <strong>site frequency spectrum (SFS)</strong>. Distortion away from SFS can be used to detect some types of natural selection, as well as other depatures from the basic model such as recent population growth.</p>
+<p>The expected number of variants with a derived allele frequency <span class="math inline">\(i\)</span> is proportional to <span class="math inline">\(1/i\)</span>:</p>
+<p><span class="math display">\[E[s_i]=\frac{1}{i}\times 4N\mu L\]</span></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb11-1" aria-hidden="true" tabindex="-1"></a>m<span class="ot">=</span><span class="dv">100</span>; fNmuL<span class="ot">=</span><span class="dv">100</span></span>
+<span id="cb11-2"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">:</span>m)<span class="sc">*</span>fNmuL, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">border=</span><span class="cn">NA</span>,</span>
+<span id="cb11-3"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb11-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;frequency of derived variant&quot;</span>,</span>
+<span id="cb11-4"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb11-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;expected number of variants&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>For m=100, 55% of the variants are below 10% frequency. And for m=10,000, 76% of variants are at &lt;10% frequency.</p>
+<p>One key thing is that most variants are rare. A useful rule of thumb is that allele frequencies are uniform on a log scale.</p>
+<p>The WF model gives a different conceptual tool to reach a similar conclusion: every new mutation starts out rare and most are lost quickly, while only a few are lucky enough to drift up to become common.</p>
+</div>
+</div>
+<div id="the-coalescent-with-population-size-changes" class="section level3 hasAnchor" number="2.2.11">
+<h3><span class="header-section-number">2.2.11</span> The coalescent with population size changes<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-coalescent-with-population-size-changes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The model above, simplest possible population model: constant size and no population structure; <strong>vanilla coalescent</strong></p>
+<p>Two types of changing population size: bottlenecks and population growth</p>
+<div id="population-bottlenecks" class="section level4 hasAnchor" number="2.2.11.1">
+<h4><span class="header-section-number">2.2.11.1</span> Population bottlenecks<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#population-bottlenecks" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A bottleneck refers to a reduction in population size. Bottlenecks greatly increase the rate of genetic drift.</p>
+<p>Bottlenecks during the spread of populations as they left Africa and colonized the globe during the past ~80k years. This is why non-African populations have less genetic variation than Africans.</p>
+<p>The ancestors of modern Jews went through a tight population bottleneck ~1000 years ago.</p>
+<p>The rate of coalescence is k(k-1)/4N per generation. When N decreases, the rate will increase. This means the few lineages that predate the bottleneck are likely to have many descendants.</p>
+</div>
+<div id="population-growth" class="section level4 hasAnchor" number="2.2.11.2">
+<h4><span class="header-section-number">2.2.11.2</span> Population growth<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#population-growth" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>human populations: ~1 million in 10,000 BCE to ~8 billion today</p>
+<p>A very large population size slows down the rate of coalescence at very recent times, and increased the number of very rare variants.</p>
+<p>In a model, the population grew instantaneously to infinite size, 100 generations ago. So there would be no coalescence in these 100 generations and greatly extending the terminal branches.</p>
+<p>The longer terminal branches produce many more singleton mutations: <span class="math inline">\(4N \times \mu L\)</span> in vanilla model, but <span class="math inline">\((4N+100m) \times \mu L\)</span>.</p>
+<p>A more realistic model is continuous exponential growth.</p>
+</div>
+<div id="footprints-of-population-history-in-real-data" class="section level4 hasAnchor" number="2.2.11.3">
+<h4><span class="header-section-number">2.2.11.3</span> Footprints of population history in real data<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#footprints-of-population-history-in-real-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Tennessen et al. (2012), exome sequencing for 1,100 African-American, and 1,300 European-American.</p>
+<p>The authors observed a much higher fraction of rare vriants compared to the null, a direct evidence for rapid recent population growth. Then fit a model of historical population sizes (often called a <strong>demographic model</strong>) that can fit the full SFS data.</p>
+</div>
+</div>
+<div id="the-coalescent-and-the-fixation-process" class="section level3 hasAnchor" number="2.2.12">
+<h3><span class="header-section-number">2.2.12</span> The coalescent and the fixation process<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-coalescent-and-the-fixation-process" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="the-probability-of-fixation-for-an-allele-now-at-frequency-p-is-simply-p" class="section level4 hasAnchor" number="2.2.12.1">
+<h4><span class="header-section-number">2.2.12.1</span> The probability of fixation for an allele now at frequency p, is simply p<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-probability-of-fixation-for-an-allele-now-at-frequency-p-is-simply-p" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="the-average-time-to-fixation-for-a-new-mutation-is-4n-generations" class="section level4 hasAnchor" number="2.2.12.2">
+<h4><span class="header-section-number">2.2.12.2</span> The average time to fixation for a new mutation is 4N generations<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-average-time-to-fixation-for-a-new-mutation-is-4n-generations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+</div>
+<div id="coalescent-simulation-of-haplotype-variation" class="section level3 hasAnchor" number="2.2.13">
+<h3><span class="header-section-number">2.2.13</span> Coalescent simulation of haplotype variation<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#coalescent-simulation-of-haplotype-variation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>msprime software</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
