@@ -405,6 +405,212 @@ The authors observed a much higher fraction of rare vriants compared to the null
 
 ### Coalescent simulation of haplotype variation
 
-Goncalo Abecasis's code: https://csg.sph.umich.edu/abecasis/class/2003/Practical1.html
+```{r}
+###Goncalo Abecasis's code: https://csg.sph.umich.edu/abecasis/class/2003/Practical1.html
 
-msprime software
+set.seed(10)
+m=5; N=1000; mu=0.001; L=1000
+
+lengths = rep(0,m)
+parentnodes = rep(0,m)
+childnodes = list()
+descendants <- rep(1, m)
+activenodes = 1:m
+nextNode = m+1
+for(k in m:2){
+    # sample "time to coalescent" from a exponential distribution
+    # with a mean of 4N/k(k-1)
+    t = rexp(1, rate=k*(k-1)/4/N)
+    # all current nodes increase in length by time t
+    lengths[activenodes] = lengths[activenodes]+t
+    # sample two nodes to coalesce
+    coalescence = sample(activenodes, 2)
+    cat("After ", t, " generations: Nodes ", coalescence[1], " and ", coalescence[2], " coalesce\n")
+    
+    parentnodes[coalescence]=nextNode
+    childnodes[[nextNode]]=coalescence
+    activenodes = c(activenodes[!(activenodes %in% coalescence)], nextNode)
+    parentnodes[nextNode] = 0
+    lengths[nextNode] = 0
+    descendants[nextNode] <- descendants[coalescence[1]] + descendants[coalescence[2]]
+    nextNode = nextNode+1
+}
+lengths
+parentnodes
+activenodes
+descendants
+childnodes
+
+spectrum <- rep(0, m)
+for (i in 1:length(descendants)){
+spectrum[descendants[i]] <- spectrum[descendants[i]]+lengths[i]
+}
+spectrum
+
+
+s = sapply(lengths, function(x) rpois(1, x*mu*L))
+pos = sapply(s, function(x) as.integer(runif(x, min=0, max=L)))
+mutation = s
+mutation
+for(i in length(mutation):(m+1)){
+    mutation[childnodes[[i]]] = mutation[childnodes[[i]]]+mutation[i]
+    print(mutation)
+}
+mutation[1:m]
+```
+
+[msprime software](https://tskit.dev/msprime/docs/stable/intro.html)
+
+## 2.3 Linkage, recombination, and LD
+
+Linkage disequilibrium (LD); recombination breaks down LD by shuffling genotypes
+
+### A first look at haplotype structure
+
+First time, Marty Kreitman, 1983, sequenced the ADH gene in 11 lines of the fly Drosophila melanogaster
+
+Haplotype; particular combinations of alleles at different SNPs frequenctly appear together
+
+### Linkage generates haplotype structure (or equivalently, LD)
+
+Linkage: sites that are close together in the genome are usually inherited together
+
+Completely linked: no recombination
+
+Relationship between the branching structure of the tree and the corresponding haplotypes:
+
+- mutations occurred on the same branch *always* appear together
+- mutations occurred on the adjacent branches *usually* appear together
+
+Without recombination, there are very strong constraints on the possible configurations of the derived alleles across haplotypes.
+
+Perfect phylogeny: haplotypes that are consistent with a single tree
+
+### Recombination
+
+#### A quick refresher on recombination
+
+Druing meiosis (减数分裂), the maternal and paternal chromosomes are broken and then joined back together so that chromosomes in the resulting gametes are mixtures of the parental chromosomes, called **recombination**, or **crossover**.
+
+More-or-less randomly across the genome; averagely 26 per sperm and 42 per egg.
+
+#### Genetic distance
+
+Measures the rate of crossover, between different positions along a chromosome; centiMorgans (cM)
+
+Genetic distance x, between two points on a chromsome to be x cM if the average number of crossovers between those two points is x/100 per meiosis, or the x% probability of a crossover per meiosis in that interval.
+
+Recombination rate: in cM/Mb: 100 times the expected number of crossovers per megabase. 
+
+The average recombination rate in the human is about 1.2 cM per MB. In other words, there is about a 1.2% probability of a crossover event per megabase.
+
+Recombination generates new combinations of alleles that would not be possible with complete linkage.
+
+For SNPs that are close together (less than ~0.01-0.1cM or 10-100Kb), linkage is a stronger force than recombination and there tends to be strong haplotype structure. At larger distances (more than 0.1cM), recombination is highly effective at shuffling genotypes, and LD is generally week.
+
+### Measuring LD between pairs of SNPs
+
+Imagine two SNPs: one with A and a alleles, and the other with B and b alleles. There are four possible haplotypes: AB, Ab, aB, and ab.
+
+The mesasure D is denfied by
+
+$$D = p_{AB}-p_A p_B$$
+
+, where $p_{AB}$ is the frequency of haplotype AB, and $p_A$ and $p_B$ is the frequncy of allele A at the first SNP and the frequency of allele B at the second SNP. As the sign depends on the labeling of the allels, so people use $|D|$
+
+D can be interpreted as the statistical covariance between alleles at the two SNPs if alleles are labeled 0 and 1.
+
+If genotypes at the two SNPs are independent, D = 0.
+
+The second measure of LD is known as $D'$
+
+$$D'=\frac{D'}{D_{max}}$$
+
+, where $D_{max}=min(p_A p_b, p_a p_B)$ when $D>0$, and $D_{max}=min(p_A p_B, p_a p_b)$ when $D<0$
+
+The third measure of LD is called $r^2$
+
+$$r^2=\frac{D^2}{p_A p_a p_B p_b}$$
+
+, which ranges from 0 and 1. $r^2=1$ means a perfect LD and there are just two of the four possible haplotypes: i.e., only AB/ab or Ab/aB
+
+### Strong recombination breaks down LD
+
+Consider only recombination, but no drift. If the c is the proability of crossover per generation between two SNPs. After one generation,
+
+$$D_1=(1-c)D_0$$
+
+, where $D_1$ is the LD D measurement in the next generation and $D_0$ is in previous generation.
+
+So After t generations,
+
+$$D_t=(1-c)^tD_0$$
+
+We can see unless the recombination rate is very small, LD decays very quickly.
+
+```{r}
+D0=0.25
+plot(0:100, D0*(1-0.05)^(0:100), type="l"); text(25,0.1,"c=0.05")
+lines(0:100,D0*(1-0.1)^(0:100), type="l", col="blue"); text(21,0.05,"c=0.1", col="blue")
+lines(0:100,D0*(1-0.5)^(0:100), type="l", col="red"); text(10,0.02,"c=0.5", col="red")
+```
+
+To summarize,
+
+- if there is no recombination, the basic properties of the coalescent genealogy tell us to expect strong LD;
+- at large distances (for SNPs more than a few cMs apart), recombination rapidly eliminates LD
+- at intermediate distance scales (say ~1-100 kb), recombination and coalescence comppete against each other.
+
+### The coalescent with recombination: the ARG
+
+Incorporate recombination into the coalescent prodcues a more complex structure called an **ancestral recombination graph (ARG)**
+
+Image two positions in a sequence. Coalescence joins lineages, but now recombination can split sequences apart so that each side of a breakpoint becomes a separate lineage.
+
+Considering more samples and more recombination events, the full ARG contains a series of so-called "marginal trees" at different positions across the sequence.
+
+#### Breakdown of LD within the ARG
+
+Recombination can create mixtures of haplotypes.
+
+#### The tug-of-war (拔河) between coalescence and recombination
+
+The tree-structure of the coalescent creates haplotype structure, while recombination tends to break it apart.
+
+The outcome of this competition is determined by a compound parameter, $4Nc$: the ratio of the rate of recombination (c) to the rate of coalescence (1/2N). 
+
+#### Timescales in the ARG
+
+For two samples and a region of length c. The rate of coalescence is 1/2N per generation and recombination occurs at a rate c per generation (in either lineage), so 2c in total. So the probability of at least one recombination before coalescence is
+
+$$\frac{2c}{2c+1/2N}=\frac{4Nc}{4Nc+1}$$
+Expand from two samples to k lineages. Coalescence decreases the number of lineages from k to k-1; this occurs at a rate of $k(k-1)/4N$ per generation. Recombination increases the number of linesages from k to k+1; this occurs at a rate of ck, where c is the total recombination rate across the segment of interest.
+
+So the probability that next event is a recombination event is
+
+$$\frac{kc}{kc+k(k-1)/4N}=\frac{4Nc}{4Nc+k-1}$$
+
+- 4Nc is the natural parameter to describe the role of recombination in an ARG
+- in large samples, coalescence predominates at recent timescales (when k is large), while recombination is more effective at scrambling the lineages further back in time (when k is small)
+
+To summarize,
+
+- sites that are close together tend to share the same genealogy, hence SNPs are in high LD
+- genealogies become less and less correlated with increasing genetic distance, thus reducing LD
+- the scale of LD depends on the product of N and c (usually wrtten as 4Nc)
+- in latge samples, the most recen coalescent events occur faster than recombination, so closely related haplotypes can be shared over large recombination distances, even at distances where overall LD is low.
+
+#### Decay of $r^2$ with distance
+
+Within a short distance, the expected $r^2$ decays as a function of distance:
+
+```{r}
+d = 0:80
+plot(d, (10+d)/(22+13*d+d^2), type="l", col="red", xlab="distances in 4Nc", ylab="r2")
+```
+
+on average 100kb in humans is around 4Nc=80; this model predicts that LD should decay to be low within around 10-100kb.
+
+### Recombination and LD in human data
+
+1990s; Human Genome project; STRs in families

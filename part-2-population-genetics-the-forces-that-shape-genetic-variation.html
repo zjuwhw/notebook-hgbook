@@ -162,6 +162,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.12" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-coalescent-and-the-fixation-process"><i class="fa fa-check"></i><b>2.2.12</b> The coalescent and the fixation process</a></li>
 <li class="chapter" data-level="2.2.13" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#coalescent-simulation-of-haplotype-variation"><i class="fa fa-check"></i><b>2.2.13</b> Coalescent simulation of haplotype variation</a></li>
 </ul></li>
+<li class="chapter" data-level="2.3" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#linkage-recombination-and-ld"><i class="fa fa-check"></i><b>2.3</b> 2.3 Linkage, recombination, and LD</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#a-first-look-at-haplotype-structure"><i class="fa fa-check"></i><b>2.3.1</b> A first look at haplotype structure</a></li>
+<li class="chapter" data-level="2.3.2" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#linkage-generates-haplotype-structure-or-equivalently-ld"><i class="fa fa-check"></i><b>2.3.2</b> Linkage generates haplotype structure (or equivalently, LD)</a></li>
+<li class="chapter" data-level="2.3.3" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#recombination"><i class="fa fa-check"></i><b>2.3.3</b> Recombination</a></li>
+<li class="chapter" data-level="2.3.4" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#measuring-ld-between-pairs-of-snps"><i class="fa fa-check"></i><b>2.3.4</b> Measuring LD between pairs of SNPs</a></li>
+<li class="chapter" data-level="2.3.5" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#strong-recombination-breaks-down-ld"><i class="fa fa-check"></i><b>2.3.5</b> Strong recombination breaks down LD</a></li>
+<li class="chapter" data-level="2.3.6" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-coalescent-with-recombination-the-arg"><i class="fa fa-check"></i><b>2.3.6</b> The coalescent with recombination: the ARG</a></li>
+<li class="chapter" data-level="2.3.7" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#recombination-and-ld-in-human-data"><i class="fa fa-check"></i><b>2.3.7</b> Recombination and LD in human data</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 Published with <a href="https://github.com/rstudio/bookdown" target="blank">bookdown</a> by <a href="http://zjuwhw.github.io/" target="blank">zjuwhw</a>
@@ -607,7 +617,216 @@ as <span class="math inline">\(1-1/2N &lt; 1\)</span>, the <span class="math inl
 </div>
 <div id="coalescent-simulation-of-haplotype-variation" class="section level3 hasAnchor" number="2.2.13">
 <h3><span class="header-section-number">2.2.13</span> Coalescent simulation of haplotype variation<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#coalescent-simulation-of-haplotype-variation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>msprime software</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Goncalo Abecasis&#39;s code: https://csg.sph.umich.edu/abecasis/class/2003/Practical1.html</span></span>
+<span id="cb12-2"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb12-4"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-4" aria-hidden="true" tabindex="-1"></a>m<span class="ot">=</span><span class="dv">5</span>; N<span class="ot">=</span><span class="dv">1000</span>; mu<span class="ot">=</span><span class="fl">0.001</span>; L<span class="ot">=</span><span class="dv">1000</span></span>
+<span id="cb12-5"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-6" aria-hidden="true" tabindex="-1"></a>lengths <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,m)</span>
+<span id="cb12-7"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-7" aria-hidden="true" tabindex="-1"></a>parentnodes <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,m)</span>
+<span id="cb12-8"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-8" aria-hidden="true" tabindex="-1"></a>childnodes <span class="ot">=</span> <span class="fu">list</span>()</span>
+<span id="cb12-9"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-9" aria-hidden="true" tabindex="-1"></a>descendants <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, m)</span>
+<span id="cb12-10"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-10" aria-hidden="true" tabindex="-1"></a>activenodes <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span>m</span>
+<span id="cb12-11"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-11" aria-hidden="true" tabindex="-1"></a>nextNode <span class="ot">=</span> m<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb12-12"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(k <span class="cf">in</span> m<span class="sc">:</span><span class="dv">2</span>){</span>
+<span id="cb12-13"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># sample &quot;time to coalescent&quot; from a exponential distribution</span></span>
+<span id="cb12-14"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># with a mean of 4N/k(k-1)</span></span>
+<span id="cb12-15"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-15" aria-hidden="true" tabindex="-1"></a>    t <span class="ot">=</span> <span class="fu">rexp</span>(<span class="dv">1</span>, <span class="at">rate=</span>k<span class="sc">*</span>(k<span class="dv">-1</span>)<span class="sc">/</span><span class="dv">4</span><span class="sc">/</span>N)</span>
+<span id="cb12-16"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># all current nodes increase in length by time t</span></span>
+<span id="cb12-17"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-17" aria-hidden="true" tabindex="-1"></a>    lengths[activenodes] <span class="ot">=</span> lengths[activenodes]<span class="sc">+</span>t</span>
+<span id="cb12-18"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># sample two nodes to coalesce</span></span>
+<span id="cb12-19"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-19" aria-hidden="true" tabindex="-1"></a>    coalescence <span class="ot">=</span> <span class="fu">sample</span>(activenodes, <span class="dv">2</span>)</span>
+<span id="cb12-20"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;After &quot;</span>, t, <span class="st">&quot; generations: Nodes &quot;</span>, coalescence[<span class="dv">1</span>], <span class="st">&quot; and &quot;</span>, coalescence[<span class="dv">2</span>], <span class="st">&quot; coalesce</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb12-21"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-22"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-22" aria-hidden="true" tabindex="-1"></a>    parentnodes[coalescence]<span class="ot">=</span>nextNode</span>
+<span id="cb12-23"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-23" aria-hidden="true" tabindex="-1"></a>    childnodes[[nextNode]]<span class="ot">=</span>coalescence</span>
+<span id="cb12-24"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-24" aria-hidden="true" tabindex="-1"></a>    activenodes <span class="ot">=</span> <span class="fu">c</span>(activenodes[<span class="sc">!</span>(activenodes <span class="sc">%in%</span> coalescence)], nextNode)</span>
+<span id="cb12-25"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-25" aria-hidden="true" tabindex="-1"></a>    parentnodes[nextNode] <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb12-26"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-26" aria-hidden="true" tabindex="-1"></a>    lengths[nextNode] <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb12-27"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-27" aria-hidden="true" tabindex="-1"></a>    descendants[nextNode] <span class="ot">&lt;-</span> descendants[coalescence[<span class="dv">1</span>]] <span class="sc">+</span> descendants[coalescence[<span class="dv">2</span>]]</span>
+<span id="cb12-28"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-28" aria-hidden="true" tabindex="-1"></a>    nextNode <span class="ot">=</span> nextNode<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb12-29"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb12-29" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## After  2.991281  generations: Nodes  1  and  2  coalesce
+## After  128.7347  generations: Nodes  6  and  5  coalesce
+## After  527.5128  generations: Nodes  4  and  3  coalesce
+## After  2173.346  generations: Nodes  7  and  8  coalesce</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb14-1" aria-hidden="true" tabindex="-1"></a>lengths</span></code></pre></div>
+<pre><code>## [1]    2.991281    2.991281  659.238850  659.238850  131.726002  128.734721
+## [7] 2700.858854 2173.346006    0.000000</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb16-1" aria-hidden="true" tabindex="-1"></a>parentnodes</span></code></pre></div>
+<pre><code>## [1] 6 6 8 8 7 7 9 9 0</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb18-1" aria-hidden="true" tabindex="-1"></a>activenodes</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb20-1" aria-hidden="true" tabindex="-1"></a>descendants</span></code></pre></div>
+<pre><code>## [1] 1 1 1 1 1 2 3 2 5</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb22-1" aria-hidden="true" tabindex="-1"></a>childnodes</span></code></pre></div>
+<pre><code>## [[1]]
+## NULL
+## 
+## [[2]]
+## NULL
+## 
+## [[3]]
+## NULL
+## 
+## [[4]]
+## NULL
+## 
+## [[5]]
+## NULL
+## 
+## [[6]]
+## [1] 1 2
+## 
+## [[7]]
+## [1] 6 5
+## 
+## [[8]]
+## [1] 4 3
+## 
+## [[9]]
+## [1] 7 8</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb24-1" aria-hidden="true" tabindex="-1"></a>spectrum <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, m)</span>
+<span id="cb24-2"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(descendants)){</span>
+<span id="cb24-3"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb24-3" aria-hidden="true" tabindex="-1"></a>spectrum[descendants[i]] <span class="ot">&lt;-</span> spectrum[descendants[i]]<span class="sc">+</span>lengths[i]</span>
+<span id="cb24-4"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb24-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-5"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb24-5" aria-hidden="true" tabindex="-1"></a>spectrum</span></code></pre></div>
+<pre><code>## [1] 1456.186 2302.081 2700.859    0.000    0.000</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb26-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> <span class="fu">sapply</span>(lengths, <span class="cf">function</span>(x) <span class="fu">rpois</span>(<span class="dv">1</span>, x<span class="sc">*</span>mu<span class="sc">*</span>L))</span>
+<span id="cb26-2"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb26-2" aria-hidden="true" tabindex="-1"></a>pos <span class="ot">=</span> <span class="fu">sapply</span>(s, <span class="cf">function</span>(x) <span class="fu">as.integer</span>(<span class="fu">runif</span>(x, <span class="at">min=</span><span class="dv">0</span>, <span class="at">max=</span>L)))</span>
+<span id="cb26-3"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb26-3" aria-hidden="true" tabindex="-1"></a>mutation <span class="ot">=</span> s</span>
+<span id="cb26-4"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb26-4" aria-hidden="true" tabindex="-1"></a>mutation</span></code></pre></div>
+<pre><code>## [1]    2    3  617  684  135  124 2752 2207    0</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">length</span>(mutation)<span class="sc">:</span>(m<span class="sc">+</span><span class="dv">1</span>)){</span>
+<span id="cb28-2"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb28-2" aria-hidden="true" tabindex="-1"></a>    mutation[childnodes[[i]]] <span class="ot">=</span> mutation[childnodes[[i]]]<span class="sc">+</span>mutation[i]</span>
+<span id="cb28-3"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(mutation)</span>
+<span id="cb28-4"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb28-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1]    2    3  617  684  135  124 2752 2207    0
+## [1]    2    3 2824 2891  135  124 2752 2207    0
+## [1]    2    3 2824 2891 2887 2876 2752 2207    0
+## [1] 2878 2879 2824 2891 2887 2876 2752 2207    0</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb30-1" aria-hidden="true" tabindex="-1"></a>mutation[<span class="dv">1</span><span class="sc">:</span>m]</span></code></pre></div>
+<pre><code>## [1] 2878 2879 2824 2891 2887</code></pre>
+<p><a href="https://tskit.dev/msprime/docs/stable/intro.html">msprime software</a></p>
+</div>
+</div>
+<div id="linkage-recombination-and-ld" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> 2.3 Linkage, recombination, and LD<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#linkage-recombination-and-ld" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Linkage disequilibrium (LD); recombination breaks down LD by shuffling genotypes</p>
+<div id="a-first-look-at-haplotype-structure" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> A first look at haplotype structure<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#a-first-look-at-haplotype-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First time, Marty Kreitman, 1983, sequenced the ADH gene in 11 lines of the fly Drosophila melanogaster</p>
+<p>Haplotype; particular combinations of alleles at different SNPs frequenctly appear together</p>
+</div>
+<div id="linkage-generates-haplotype-structure-or-equivalently-ld" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Linkage generates haplotype structure (or equivalently, LD)<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#linkage-generates-haplotype-structure-or-equivalently-ld" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Linkage: sites that are close together in the genome are usually inherited together</p>
+<p>Completely linked: no recombination</p>
+<p>Relationship between the branching structure of the tree and the corresponding haplotypes:</p>
+<ul>
+<li>mutations occurred on the same branch <em>always</em> appear together</li>
+<li>mutations occurred on the adjacent branches <em>usually</em> appear together</li>
+</ul>
+<p>Without recombination, there are very strong constraints on the possible configurations of the derived alleles across haplotypes.</p>
+<p>Perfect phylogeny: haplotypes that are consistent with a single tree</p>
+</div>
+<div id="recombination" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Recombination<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#recombination" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="a-quick-refresher-on-recombination" class="section level4 hasAnchor" number="2.3.3.1">
+<h4><span class="header-section-number">2.3.3.1</span> A quick refresher on recombination<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#a-quick-refresher-on-recombination" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Druing meiosis (减数分裂), the maternal and paternal chromosomes are broken and then joined back together so that chromosomes in the resulting gametes are mixtures of the parental chromosomes, called <strong>recombination</strong>, or <strong>crossover</strong>.</p>
+<p>More-or-less randomly across the genome; averagely 26 per sperm and 42 per egg.</p>
+</div>
+<div id="genetic-distance" class="section level4 hasAnchor" number="2.3.3.2">
+<h4><span class="header-section-number">2.3.3.2</span> Genetic distance<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#genetic-distance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Measures the rate of crossover, between different positions along a chromosome; centiMorgans (cM)</p>
+<p>Genetic distance x, between two points on a chromsome to be x cM if the average number of crossovers between those two points is x/100 per meiosis, or the x% probability of a crossover per meiosis in that interval.</p>
+<p>Recombination rate: in cM/Mb: 100 times the expected number of crossovers per megabase.</p>
+<p>The average recombination rate in the human is about 1.2 cM per MB. In other words, there is about a 1.2% probability of a crossover event per megabase.</p>
+<p>Recombination generates new combinations of alleles that would not be possible with complete linkage.</p>
+<p>For SNPs that are close together (less than ~0.01-0.1cM or 10-100Kb), linkage is a stronger force than recombination and there tends to be strong haplotype structure. At larger distances (more than 0.1cM), recombination is highly effective at shuffling genotypes, and LD is generally week.</p>
+</div>
+</div>
+<div id="measuring-ld-between-pairs-of-snps" class="section level3 hasAnchor" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Measuring LD between pairs of SNPs<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#measuring-ld-between-pairs-of-snps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Imagine two SNPs: one with A and a alleles, and the other with B and b alleles. There are four possible haplotypes: AB, Ab, aB, and ab.</p>
+<p>The mesasure D is denfied by</p>
+<p><span class="math display">\[D = p_{AB}-p_A p_B\]</span></p>
+<p>, where <span class="math inline">\(p_{AB}\)</span> is the frequency of haplotype AB, and <span class="math inline">\(p_A\)</span> and <span class="math inline">\(p_B\)</span> is the frequncy of allele A at the first SNP and the frequency of allele B at the second SNP. As the sign depends on the labeling of the allels, so people use <span class="math inline">\(|D|\)</span></p>
+<p>D can be interpreted as the statistical covariance between alleles at the two SNPs if alleles are labeled 0 and 1.</p>
+<p>If genotypes at the two SNPs are independent, D = 0.</p>
+<p>The second measure of LD is known as <span class="math inline">\(D&#39;\)</span></p>
+<p><span class="math display">\[D&#39;=\frac{D&#39;}{D_{max}}\]</span></p>
+<p>, where <span class="math inline">\(D_{max}=min(p_A p_b, p_a p_B)\)</span> when <span class="math inline">\(D&gt;0\)</span>, and <span class="math inline">\(D_{max}=min(p_A p_B, p_a p_b)\)</span> when <span class="math inline">\(D&lt;0\)</span></p>
+<p>The third measure of LD is called <span class="math inline">\(r^2\)</span></p>
+<p><span class="math display">\[r^2=\frac{D^2}{p_A p_a p_B p_b}\]</span></p>
+<p>, which ranges from 0 and 1. <span class="math inline">\(r^2=1\)</span> means a perfect LD and there are just two of the four possible haplotypes: i.e., only AB/ab or Ab/aB</p>
+</div>
+<div id="strong-recombination-breaks-down-ld" class="section level3 hasAnchor" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> Strong recombination breaks down LD<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#strong-recombination-breaks-down-ld" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consider only recombination, but no drift. If the c is the proability of crossover per generation between two SNPs. After one generation,</p>
+<p><span class="math display">\[D_1=(1-c)D_0\]</span></p>
+<p>, where <span class="math inline">\(D_1\)</span> is the LD D measurement in the next generation and <span class="math inline">\(D_0\)</span> is in previous generation.</p>
+<p>So After t generations,</p>
+<p><span class="math display">\[D_t=(1-c)^tD_0\]</span></p>
+<p>We can see unless the recombination rate is very small, LD decays very quickly.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb32-1" aria-hidden="true" tabindex="-1"></a>D0<span class="ot">=</span><span class="fl">0.25</span></span>
+<span id="cb32-2"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>, D0<span class="sc">*</span>(<span class="dv">1</span><span class="fl">-0.05</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>), <span class="at">type=</span><span class="st">&quot;l&quot;</span>); <span class="fu">text</span>(<span class="dv">25</span>,<span class="fl">0.1</span>,<span class="st">&quot;c=0.05&quot;</span>)</span>
+<span id="cb32-3"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>,D0<span class="sc">*</span>(<span class="dv">1</span><span class="fl">-0.1</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>), <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>); <span class="fu">text</span>(<span class="dv">21</span>,<span class="fl">0.05</span>,<span class="st">&quot;c=0.1&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb32-4"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>,D0<span class="sc">*</span>(<span class="dv">1</span><span class="fl">-0.5</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>), <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>); <span class="fu">text</span>(<span class="dv">10</span>,<span class="fl">0.02</span>,<span class="st">&quot;c=0.5&quot;</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>To summarize,</p>
+<ul>
+<li>if there is no recombination, the basic properties of the coalescent genealogy tell us to expect strong LD;</li>
+<li>at large distances (for SNPs more than a few cMs apart), recombination rapidly eliminates LD</li>
+<li>at intermediate distance scales (say ~1-100 kb), recombination and coalescence comppete against each other.</li>
+</ul>
+</div>
+<div id="the-coalescent-with-recombination-the-arg" class="section level3 hasAnchor" number="2.3.6">
+<h3><span class="header-section-number">2.3.6</span> The coalescent with recombination: the ARG<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-coalescent-with-recombination-the-arg" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Incorporate recombination into the coalescent prodcues a more complex structure called an <strong>ancestral recombination graph (ARG)</strong></p>
+<p>Image two positions in a sequence. Coalescence joins lineages, but now recombination can split sequences apart so that each side of a breakpoint becomes a separate lineage.</p>
+<p>Considering more samples and more recombination events, the full ARG contains a series of so-called “marginal trees” at different positions across the sequence.</p>
+<div id="breakdown-of-ld-within-the-arg" class="section level4 hasAnchor" number="2.3.6.1">
+<h4><span class="header-section-number">2.3.6.1</span> Breakdown of LD within the ARG<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#breakdown-of-ld-within-the-arg" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Recombination can create mixtures of haplotypes.</p>
+</div>
+<div id="the-tug-of-war-拔河-between-coalescence-and-recombination" class="section level4 hasAnchor" number="2.3.6.2">
+<h4><span class="header-section-number">2.3.6.2</span> The tug-of-war (拔河) between coalescence and recombination<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-tug-of-war-拔河-between-coalescence-and-recombination" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The tree-structure of the coalescent creates haplotype structure, while recombination tends to break it apart.</p>
+<p>The outcome of this competition is determined by a compound parameter, <span class="math inline">\(4Nc\)</span>: the ratio of the rate of recombination (c) to the rate of coalescence (1/2N).</p>
+</div>
+<div id="timescales-in-the-arg" class="section level4 hasAnchor" number="2.3.6.3">
+<h4><span class="header-section-number">2.3.6.3</span> Timescales in the ARG<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#timescales-in-the-arg" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>For two samples and a region of length c. The rate of coalescence is 1/2N per generation and recombination occurs at a rate c per generation (in either lineage), so 2c in total. So the probability of at least one recombination before coalescence is</p>
+<p><span class="math display">\[\frac{2c}{2c+1/2N}=\frac{4Nc}{4Nc+1}\]</span>
+Expand from two samples to k lineages. Coalescence decreases the number of lineages from k to k-1; this occurs at a rate of <span class="math inline">\(k(k-1)/4N\)</span> per generation. Recombination increases the number of linesages from k to k+1; this occurs at a rate of ck, where c is the total recombination rate across the segment of interest.</p>
+<p>So the probability that next event is a recombination event is</p>
+<p><span class="math display">\[\frac{kc}{kc+k(k-1)/4N}=\frac{4Nc}{4Nc+k-1}\]</span></p>
+<ul>
+<li>4Nc is the natural parameter to describe the role of recombination in an ARG</li>
+<li>in large samples, coalescence predominates at recent timescales (when k is large), while recombination is more effective at scrambling the lineages further back in time (when k is small)</li>
+</ul>
+<p>To summarize,</p>
+<ul>
+<li>sites that are close together tend to share the same genealogy, hence SNPs are in high LD</li>
+<li>genealogies become less and less correlated with increasing genetic distance, thus reducing LD</li>
+<li>the scale of LD depends on the product of N and c (usually wrtten as 4Nc)</li>
+<li>in latge samples, the most recen coalescent events occur faster than recombination, so closely related haplotypes can be shared over large recombination distances, even at distances where overall LD is low.</li>
+</ul>
+</div>
+<div id="decay-of-r2-with-distance" class="section level4 hasAnchor" number="2.3.6.4">
+<h4><span class="header-section-number">2.3.6.4</span> Decay of <span class="math inline">\(r^2\)</span> with distance<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#decay-of-r2-with-distance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Within a short distance, the expected <span class="math inline">\(r^2\)</span> decays as a function of distance:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb33-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">80</span></span>
+<span id="cb33-2"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d, (<span class="dv">10</span><span class="sc">+</span>d)<span class="sc">/</span>(<span class="dv">22</span><span class="sc">+</span><span class="dv">13</span><span class="sc">*</span>d<span class="sc">+</span>d<span class="sc">^</span><span class="dv">2</span>), <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;distances in 4Nc&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;r2&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>on average 100kb in humans is around 4Nc=80; this model predicts that LD should decay to be low within around 10-100kb.</p>
+</div>
+</div>
+<div id="recombination-and-ld-in-human-data" class="section level3 hasAnchor" number="2.3.7">
+<h3><span class="header-section-number">2.3.7</span> Recombination and LD in human data<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#recombination-and-ld-in-human-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>1990s; Human Genome project; STRs in families</p>
 
 </div>
 </div>

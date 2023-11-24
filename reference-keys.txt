@@ -36,3 +36,17 @@ the-coalescent-and-the-fixation-process
 the-probability-of-fixation-for-an-allele-now-at-frequency-p-is-simply-p
 the-average-time-to-fixation-for-a-new-mutation-is-4n-generations
 coalescent-simulation-of-haplotype-variation
+linkage-recombination-and-ld
+a-first-look-at-haplotype-structure
+linkage-generates-haplotype-structure-or-equivalently-ld
+recombination
+a-quick-refresher-on-recombination
+genetic-distance
+measuring-ld-between-pairs-of-snps
+strong-recombination-breaks-down-ld
+the-coalescent-with-recombination-the-arg
+breakdown-of-ld-within-the-arg
+the-tug-of-war-拔河-between-coalescence-and-recombination
+timescales-in-the-arg
+decay-of-r2-with-distance
+recombination-and-ld-in-human-data
