@@ -50,3 +50,10 @@ the-tug-of-war-拔河-between-coalescence-and-recombination
 timescales-in-the-arg
 decay-of-r2-with-distance
 recombination-and-ld-in-human-data
+prdm9-and-the-hotspot-paradox
+haplotype-copying-models
+the-conditional-sampling-probability-for-haplotype-copying
+phasing-and-imputation
+genetic-drift-in-structured-populations
+humans-share-a-recent-african-origin
+allele-freqeuncy-variation-across-populations

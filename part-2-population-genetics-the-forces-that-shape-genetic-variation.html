@@ -171,6 +171,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.5" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#strong-recombination-breaks-down-ld"><i class="fa fa-check"></i><b>2.3.5</b> Strong recombination breaks down LD</a></li>
 <li class="chapter" data-level="2.3.6" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-coalescent-with-recombination-the-arg"><i class="fa fa-check"></i><b>2.3.6</b> The coalescent with recombination: the ARG</a></li>
 <li class="chapter" data-level="2.3.7" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#recombination-and-ld-in-human-data"><i class="fa fa-check"></i><b>2.3.7</b> Recombination and LD in human data</a></li>
+<li class="chapter" data-level="2.3.8" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#prdm9-and-the-hotspot-paradox"><i class="fa fa-check"></i><b>2.3.8</b> PRDM9 and the hotspot paradox</a></li>
+<li class="chapter" data-level="2.3.9" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#haplotype-copying-models"><i class="fa fa-check"></i><b>2.3.9</b> Haplotype copying models</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#genetic-drift-in-structured-populations"><i class="fa fa-check"></i><b>2.4</b> Genetic drift in structured populations</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#humans-share-a-recent-african-origin"><i class="fa fa-check"></i><b>2.4.1</b> Humans share a recent African origin</a></li>
+<li class="chapter" data-level="2.4.2" data-path="part-2-population-genetics-the-forces-that-shape-genetic-variation.html"><a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#allele-freqeuncy-variation-across-populations"><i class="fa fa-check"></i><b>2.4.2</b> Allele freqeuncy variation across populations</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -826,7 +833,96 @@ Expand from two samples to k lineages. Coalescence decreases the number of linea
 </div>
 <div id="recombination-and-ld-in-human-data" class="section level3 hasAnchor" number="2.3.7">
 <h3><span class="header-section-number">2.3.7</span> Recombination and LD in human data<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#recombination-and-ld-in-human-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>1990s; Human Genome project; STRs in families</p>
+<p>1990s; Human Genome project;</p>
+<p>STRs in families (low-resolution: ~2 per Mb)</p>
+<ul>
+<li>recombination rates vary from about 1-3 cM/Mb (except for the centromere), the higher near the telomeres</li>
+<li>Female rates are generally higher than male rates; 1.6-fold</li>
+</ul>
+<p>high-resolution SNP data</p>
+<ul>
+<li>LD structure forms blocks of high LD (so called haplotype blocks)</li>
+<li>heatmap with color indicating <span class="math inline">\(|D&#39;|\)</span> pr <span class="math inline">\(r^2\)</span></li>
+<li>The blocky structure of the D’ matrices suggests that most recombination is taking place at the boundary points between adjacent blocks</li>
+</ul>
+<p>Use LD structure to estimate a fine-scale recombination</p>
+<p>recombination hotspots: ~30,000 identified, additional weaker hotspots</p>
+<p>LD is lowest in African populations due to their larger long-term effective population size</p>
+</div>
+<div id="prdm9-and-the-hotspot-paradox" class="section level3 hasAnchor" number="2.3.8">
+<h3><span class="header-section-number">2.3.8</span> PRDM9 and the hotspot paradox<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#prdm9-and-the-hotspot-paradox" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>2005 paper by Simon Myers and collegues: 7-nucleotide sequence motif</p>
+<p><strong>hotspot paradox</strong>: first pointed out by Rosie Redfield and colleagues in a 1997 PNAS paper</p>
+<p>Meiosis,</p>
+<ul>
+<li>homologous chromosomes pair up;
+= crossovers initiated by one of the two homologous</li>
+<li>double-strand break for initiating chromosome and part of the chromosome is chewed back in both directions around the break</li>
+<li>the damaged region is repaired using the other chromosome as a template as gene coversion</li>
+</ul>
+<p>For two chromsomes, one with the hotspot motif and the other without, it will ends with two chromsomes without motifs. Biased gene conversion. A form of selction to remove hotspots.</p>
+<p>Hotspot paradox argues that over time, all hotspots will be eliminated</p>
+<p><strong>comparing LD in humans and chimpanzees</strong></p>
+<ul>
+<li>differing at only ~1.4% of sites</li>
+<li>no meaningful overlap of hotspot locations between humans and chimps</li>
+</ul>
+<p><strong>European-American population</strong>: not everyone uses the same hotspots at the same rates</p>
+<p>papers in 2010</p>
+<ul>
+<li>PRDM9 with a “zinc finger” domain that is responsible for DNA binding</li>
+<li>PRDM9 binds to the DNA and recruits additional machinery to initiate double-strand breaks</li>
+<li>zinc finger DNA-binding domain is encoded within a minisatellite (or VNTRs) repeat section of the gene</li>
+<li>highly variable due to misparing during DNA replication</li>
+<li>PRDM9 has dozens of alleles found in humans</li>
+<li>different alleles have differnt DNA binding preferences</li>
+<li>Chimpanzees also have completely different PRDM9 alleles from humans</li>
+<li>most rapidly evolving vertebrate genes</li>
+</ul>
+</div>
+<div id="haplotype-copying-models" class="section level3 hasAnchor" number="2.3.9">
+<h3><span class="header-section-number">2.3.9</span> Haplotype copying models<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#haplotype-copying-models" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Landmark 2003 paper, Na Li and Matthew Stephens; haplotype copying model (Li and Stephens, or product of approximate conditionals model)</p>
+<p>conditional sampling probability for the “next” haplotype in a sample</p>
+<ol style="list-style-type: decimal">
+<li>within a sample region of DNA sequence, the next haplotype “copy” one already seen, but not be identical due to mutations</li>
+<li>over a larger region, the enxt haplotype with switch due to recombination</li>
+<li>the rate of both switches and mutations should decrease with the sample size of reference panel</li>
+</ol>
+<div id="the-conditional-sampling-probability-for-haplotype-copying" class="section level4 hasAnchor" number="2.3.9.1">
+<h4><span class="header-section-number">2.3.9.1</span> The conditional sampling probability for haplotype copying<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#the-conditional-sampling-probability-for-haplotype-copying" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Assume <span class="math inline">\(K\)</span> haplotypes observed and genotype data at <span class="math inline">\(S\)</span> SNPs, for the next haplotype from the fist variant poisition s=1 to the last s=S:</p>
+<ul>
+<li>determining the allele value: the proability of the allele in the new haplotype is equal the allele at site s in haplotype k is <span class="math inline">\(1-[\theta/(K+\theta)]\)</span>, where <span class="math inline">\(\theta\)</span> reflects the rate of mutations or mismatches</li>
+<li>recombination: move from SNP s to s+1, the proability we introduce a recombination event is <span class="math inline">\(1-e^{-4Nc_s/K}\)</span>, wjere <span class="math inline">\(c_s\)</span> is the expected number of crossovers between these two SNPs per generation</li>
+<li>increment SNP position. Set s to s+1 (Markov process)</li>
+</ul>
+<p>Hidden Markov Models (HMMs)</p>
+</div>
+<div id="phasing-and-imputation" class="section level4 hasAnchor" number="2.3.9.2">
+<h4><span class="header-section-number">2.3.9.2</span> Phasing and imputation<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#phasing-and-imputation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>phasing: infer which heterozygous alleles are from the same homologs</li>
+<li>imputation: infer genotypes at SNPs that were not on the genotype array</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="genetic-drift-in-structured-populations" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Genetic drift in structured populations<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#genetic-drift-in-structured-populations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>nonrandom mating is referred to as <strong>population structure</strong></p>
+<p>between continents and geographic regions, nearby ethnic groups, towns or villages.</p>
+<div id="humans-share-a-recent-african-origin" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Humans share a recent African origin<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#humans-share-a-recent-african-origin" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Humans are descended from populations in sub-Saharan Africa. Around 80,000 years ago, part of this population spread out of Africa, and eventually colonized most of the world’s land masses.</p>
+</div>
+<div id="allele-freqeuncy-variation-across-populations" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Allele freqeuncy variation across populations<a href="part-2-population-genetics-the-forces-that-shape-genetic-variation.html#allele-freqeuncy-variation-across-populations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>alleles and haplotypes to drift independently in different populations. Lead to differences in allele and haplotype frequencies.</p>
+<ol style="list-style-type: decimal">
+<li>alleles that are common in one population tend to be common everywhere</li>
+<li>alleles that are rare are usually restricted to a single population or continent</li>
+</ol>
 
 </div>
 </div>

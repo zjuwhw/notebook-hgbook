@@ -613,4 +613,99 @@ on average 100kb in humans is around 4Nc=80; this model predicts that LD should 
 
 ### Recombination and LD in human data
 
-1990s; Human Genome project; STRs in families
+1990s; Human Genome project; 
+
+STRs in families (low-resolution: ~2 per Mb)
+
+- recombination rates vary from about 1-3 cM/Mb (except for the centromere), the higher near the telomeres
+- Female rates are generally higher than male rates; 1.6-fold
+
+high-resolution SNP data
+
+- LD structure forms blocks of high LD (so called haplotype blocks)
+- heatmap with color indicating $|D'|$ pr $r^2$
+- The blocky structure of the D' matrices suggests that most recombination is taking place at the boundary points between adjacent blocks
+
+Use LD structure to estimate a fine-scale recombination
+
+recombination hotspots: ~30,000 identified, additional weaker hotspots
+
+LD is lowest in African populations due to their larger long-term effective population size
+
+### PRDM9 and the hotspot paradox
+
+2005 paper by Simon Myers and collegues: 7-nucleotide sequence motif
+
+**hotspot paradox**: first pointed out by Rosie Redfield and colleagues in a 1997 PNAS paper
+
+Meiosis,
+
+- homologous chromosomes pair up; 
+= crossovers initiated by one of the two homologous
+- double-strand break for initiating chromosome and part of the chromosome is chewed back in both directions around the break
+- the damaged region is repaired using the other chromosome as a template as gene coversion
+
+For two chromsomes, one with the hotspot motif and the other without, it will ends with two chromsomes without motifs. Biased gene conversion. A form of selction to remove hotspots.
+
+Hotspot paradox argues that over time, all hotspots will be eliminated
+
+**comparing LD in humans and chimpanzees**
+
+- differing at only ~1.4% of sites
+- no meaningful overlap of hotspot locations between humans and chimps
+
+**European-American population**: not everyone uses the same hotspots at the same rates
+
+papers in 2010
+
+- PRDM9 with a "zinc finger" domain that is responsible for DNA binding
+- PRDM9 binds to the DNA and recruits additional machinery to initiate double-strand breaks
+- zinc finger DNA-binding domain is encoded within a minisatellite (or VNTRs) repeat section of the gene
+- highly variable due to misparing during DNA replication
+- PRDM9 has dozens of alleles found in humans
+- different alleles have differnt DNA binding preferences
+- Chimpanzees also have completely different PRDM9 alleles from humans
+- most rapidly evolving vertebrate genes
+
+### Haplotype copying models
+
+Landmark 2003 paper, Na Li and Matthew Stephens; haplotype copying model (Li and Stephens, or product of approximate conditionals model)
+
+conditional sampling probability for the "next" haplotype in a sample
+
+1. within a sample region of DNA sequence, the next haplotype "copy" one already seen, but not be identical due to mutations
+2. over a larger region, the enxt haplotype with switch due to recombination
+3. the rate of both switches and mutations should decrease with the sample size of reference panel
+
+#### The conditional sampling probability for haplotype copying
+
+Assume $K$ haplotypes observed and genotype data at $S$ SNPs, for the next haplotype from the fist variant poisition s=1 to the last s=S:
+
+- determining the allele value: the proability of the allele in the new haplotype is equal the allele at site s in haplotype k is $1-[\theta/(K+\theta)]$, where $\theta$ reflects the rate of mutations or mismatches
+- recombination: move from SNP s to s+1, the proability we introduce a recombination event is $1-e^{-4Nc_s/K}$, wjere $c_s$ is the expected number of crossovers between these two SNPs per generation
+- increment SNP position. Set s to s+1 (Markov process)
+
+Hidden Markov Models (HMMs)
+
+#### Phasing and imputation
+
+- phasing: infer which heterozygous alleles are from the same homologs
+- imputation: infer genotypes at SNPs that were not on the genotype array
+
+## Genetic drift in structured populations
+
+nonrandom mating is referred to as **population structure**
+
+between continents and geographic regions, nearby ethnic groups, towns or villages.
+
+### Humans share a recent African origin
+
+Humans are descended from populations in sub-Saharan Africa. Around 80,000 years ago, part of this population spread out of Africa, and eventually colonized most of the world's land masses.
+
+### Allele freqeuncy variation across populations
+
+alleles and haplotypes to drift independently in different populations. Lead to differences in allele and haplotype frequencies.
+
+1. alleles that are common in one population tend to be common everywhere
+2. alleles that are rare are usually restricted to a single population or continent
+
