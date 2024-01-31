@@ -1,4 +1,4 @@
-# Part 2: Population genetics: the forces that shape genetic variation
+# Population genetics: the forces that shape genetic variation
 
 key forces are:
 
@@ -7,7 +7,7 @@ key forces are:
 - recombination
 - natural selection
 
-## 2.1 Genetic Drift: What happens to alleles over time?
+## Genetic Drift: What happens to alleles over time?
 
 - two copies of your genome differ 3 million SNPs
 - about 70 are new mutations from your parents (one generation)
@@ -175,7 +175,7 @@ Glist
 - forward vs backward simulations: computationally slower, but simple models, esaier to implement and far more flexible.
 - **SLiM**
 
-## 2.2 More on genetic drift: The coalescent
+## More on genetic drift: The coalescent
 
 ### A short history
 
@@ -461,7 +461,7 @@ mutation[1:m]
 
 [msprime software](https://tskit.dev/msprime/docs/stable/intro.html)
 
-## 2.3 Linkage, recombination, and LD
+## Linkage, recombination, and LD
 
 Linkage disequilibrium (LD); recombination breaks down LD by shuffling genotypes
 
@@ -708,4 +708,6 @@ alleles and haplotypes to drift independently in different populations. Lead to 
 
 1. alleles that are common in one population tend to be common everywhere
 2. alleles that are rare are usually restricted to a single population or continent
+
+### Models of population separation and drift
 

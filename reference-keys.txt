@@ -1,5 +1,10 @@
-preface
-part-2-population-genetics-the-forces-that-shape-genetic-variation
+an-introduction-to-human-genetics
+some-very-useful-numbers-for-human-population-genetics
+a-genome-owners-starter-pack
+human-genome-variation-and-why-it-matters
+dna-sequencing-a-fundamental-tool-for-studying-biology
+mutation-the-ultimate-source-of-genetic-variation
+population-genetics-the-forces-that-shape-genetic-variation
 genetic-drift-what-happens-to-alleles-over-time
 the-wright-fisher-wf-model-of-genetic-drift
 binomial-sampling-over-successive-generations-produces-genetic-drift
@@ -57,3 +62,4 @@ phasing-and-imputation
 genetic-drift-in-structured-populations
 humans-share-a-recent-african-origin
 allele-freqeuncy-variation-across-populations
+models-of-population-separation-and-drift

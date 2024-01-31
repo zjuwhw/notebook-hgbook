@@ -1,4 +1,4 @@
-# Preface
+# Preface {-}
 
 This is a notebook for reading Prof. Jonathon Prichard's online free Human Genetics book "[An Owner's Guide to the Human Genome:
 an introduction to human population genetics, variation and disease"](https://web.stanford.edu/group/pritchardlab/HGbook.html).
